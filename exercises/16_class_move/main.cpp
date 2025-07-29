@@ -39,6 +39,8 @@ public:
 
         other.cache = nullptr;
         other.cached = 0;
+
+        return *this;
     }
 
     // TODO: 实现析构器，释放缓存空间

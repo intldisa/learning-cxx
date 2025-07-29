@@ -11,8 +11,11 @@ struct Tensor {
     Tensor(unsigned int const shape_[N]) {
         unsigned int size = 1;
         // TODO: 填入正确的 shape 并计算 size
-        std::memcpy(shape, shape_, 4 * sizeof(unsigned int const));
-        size = shape[0] * shape[1] * shape[2] * shape[3];
+        std::memcpy(shape, shape_, N * sizeof(unsigned int const));
+        size = 1;
+        for(int i = 0; i < N; ++i) {
+            size *= shape[i];
+        }
         data = new T[size];
         std::memset(data, 0, size * sizeof(T));
     }
