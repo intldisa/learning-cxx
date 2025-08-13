@@ -16,7 +16,7 @@ class DynFibonacci {
 public:
     // TODO: 实现动态设置容量的构造器
     DynFibonacci(int capacity): cache(new size_t[capacity]{0, 1, 1}), cached(2) {
-        for (; cached <= capacity; ++cached) {
+        for (; cached < capacity; ++cached) {
             cache[cached] = cache[cached - 1] + cache[cached - 2];
         }
     }
@@ -80,6 +80,7 @@ int main(int argc, char **argv) {
     DynFibonacci fib1(12);
 
     fib0 = std::move(fib1);
+    // 自移动测试 - 应该正确处理
     fib0 = std::move(fib0);
     ASSERT(fib0[10] == 55, "fibonacci(10) should be 55");
 
